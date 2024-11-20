@@ -1,0 +1,37 @@
+#!/bin/zsh
+
+if [ -z $EDITOR ]
+then
+	echo ""
+	echo "please set the EDITOR env to the editor of your choice"
+	exit 1
+fi
+
+[ -z $DOTFILES ] && export DOTFILES=$HOME/.local/share/dotfiles
+
+main_menu() {
+	exit="<exit>"
+	prompt="Choose a configuration file to edit or $exit"
+	choice=$(gum choose $exit "config" "kitty" "zsh" "starship" --header=$prompt)
+	case $choice in
+		"config") $EDITOR $DOTFILES/scripts/config ;;
+		"kitty") $EDITOR $DOTFILES/kitty/kitty.conf ;;
+		"starship") $EDITOR $DOTFILES/starship/starship.toml ;;
+		"zsh") zsh_menu ;;
+		$exit) exit 0 ;;
+	esac
+}
+
+zsh_menu() {
+	back="<back>"
+	prompt="Choose a zsh configuration file to edit or $back"
+	choice=$(ls -1 $DOTFILES/zsh/* | xargs basename | xargs gum choose --header=$prompt $back)
+	if [ $choice = $back ]
+	then
+		main_menu
+	else
+		$EDITOR "$DOTFILES/zsh/$choice"
+	fi
+}
+
+main_menu

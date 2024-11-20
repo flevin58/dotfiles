@@ -1,0 +1,9 @@
+apps = ["arduino-cli", "avrdude", "cmake", "curl", "ffmpeg", "gcc", "go", "gtk4", "gum", "lsusb", "make", "modularml/packages/modular", "neofetch", "neovim", "node", "pyenv", "raylib", "rustup", "starship", "teamookla/speedtest/speedtest", "tree", "vim", "wget", "zip", "zsh-autosuggestions", "zsh-syntax-highlighting", ""]
+
+[[links]]
+  src = "kitty/backgrnd.jpg"
+  dst = "~/Desktop/img1.jpg"
+
+[[links]]
+  src = "kitty/backgrnd.jpg"
+  dst = "~/Desktop/img2.jpg"

@@ -1,0 +1,25 @@
+# Add mystuff path
+export DOTFILES=$HOME/.local/share/dotfiles
+export FINROOT=$DOTFILES
+export EDITOR=nvim
+export PATH=$DOTFILES/bin:$DOTFILES/scripts:$PATH
+export LIBRARY_PATH="$(brew --prefix)/lib"
+
+# Do the magic!
+for zshfile in $DOTFILES/zsh/*.zsh; do source $zshfile; done
+
+# Add zsh plugins
+plugins=(
+	zsh-sutosuggestions
+	zsh-syntax-highlighting
+)
+
+# Add starship command prompt
+eval "$(starship init zsh)"
+
+# Add zoxide functionality
+eval "$(zoxide init zsh)"
+alias cd="z"
+
+# Kool computer info on screen
+neofetch

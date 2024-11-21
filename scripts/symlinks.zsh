@@ -10,4 +10,5 @@ symlink() {
 symlink "starship/starship.toml" "$HOME/.config/starship.toml"
 symlink "zsh/zshrc" "$HOME/.zshrc"
 symlink "kitty" "$HOME/.config/kitty"
+symlink "nvim" "$HOME/.config/nvim"
 

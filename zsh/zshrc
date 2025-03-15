@@ -2,7 +2,7 @@
 export DOTFILES=$HOME/.local/share/dotfiles
 export FINROOT=$DOTFILES
 export EDITOR=nvim
-export PATH=$DOTFILES/bin:$DOTFILES/scripts:$PATH
+export PATH=$DOTFILES/bin:$DOTFILES/scripts:$HOME/.local/bin:$PATH
 export LIBRARY_PATH="$(brew --prefix)/lib"
 
 # Do the magic!

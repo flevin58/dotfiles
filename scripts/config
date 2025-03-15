@@ -10,28 +10,30 @@ fi
 [ -z $DOTFILES ] && export DOTFILES=$HOME/.local/share/dotfiles
 
 main_menu() {
-	exit="<exit>"
-	prompt="Choose a configuration file to edit or $exit"
-	choice=$(gum choose $exit "config" "kitty" "zsh" "starship" --header=$prompt)
+	abort="<canceled>"
+	prompt="Choose a configuration file or press (ESC):"
+	choice=$(shin select --choices "config kitty zsh starship" --prompt $prompt)
 	case $choice in
 		"config") $EDITOR $DOTFILES/scripts/config ;;
 		"kitty") $EDITOR $DOTFILES/kitty/kitty.conf ;;
 		"starship") $EDITOR $DOTFILES/starship/starship.toml ;;
 		"zsh") zsh_menu ;;
-		$exit) exit 0 ;;
+		$abort) exit 0 ;;
 	esac
 }
 
 zsh_menu() {
+	abort="<canceled>"
 	back="<back>"
 	prompt="Choose a zsh configuration file to edit or $back"
-	choice=$(ls -1 $DOTFILES/zsh/* | xargs basename | xargs gum choose --header=$prompt $back)
-	if [ $choice = $back ]
-	then
-		main_menu
-	else
-		$EDITOR "$DOTFILES/zsh/$choice"
-	fi
+	# choice=$(ls -1 $DOTFILES/zsh/* | xargs basename | xargs gum choose --header=$prompt $back)
+	zfiles=$(ls -1 $DOTFILES/zsh/* | xargs basename)
+	choice=$(shin select --prompt "$prompt $back" --choices $zfiles)
+	case $choice in
+		$abort) exit 0 ;;
+		$back) main_menu ;;
+		*) $EDITOR "$DOTFILES/zsh/$choice" ;;
+	esac
 }
 
 main_menu

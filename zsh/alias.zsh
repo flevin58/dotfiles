@@ -14,12 +14,14 @@ alias gob="go build"
 alias gogo="cd ~/Sviluppo/Go"
 # Add rust-related aliases
 alias gorust="cd ~/Sviluppo/Rust"
+alias ci="cargo install --path ."
 alias cr="cargo run -q --"
 alias ct="cargo test"
 # Add zig-related aliases
 alias gozig="cd ~/Sviluppo/Zig"
 alias zbr="zig build run"
 alias zbt="zig build test --summary all"
+alias zfr="zig fetch --save https://github.com/raysan5/raylib/archive/refs/tags/5.5.tar.gz"
 # Add more advanced aliases
 alias edit="$EDITOR"
 alias remove="rm -rf"

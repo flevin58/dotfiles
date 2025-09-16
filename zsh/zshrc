@@ -3,7 +3,9 @@ export DOTFILES=$HOME/.local/share/dotfiles
 export FINROOT=$DOTFILES
 export EDITOR=nvim
 export PATH=$DOTFILES/bin:$DOTFILES/scripts:$HOME/.local/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
 export LIBRARY_PATH="$(brew --prefix)/lib"
+export PLAYDATE_SDK_PATH=$HOME/Developer/PlaydateSDK
 
 # Do the magic!
 for zshfile in $DOTFILES/zsh/*.zsh; do source $zshfile; done

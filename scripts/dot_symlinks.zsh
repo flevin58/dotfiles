@@ -1,14 +1,12 @@
 #!/usr/bin/env zsh
 
-export DOTFILES=~/.local/share/dotfiles
+[ -z $DOTFILES ] && export DOTFILES=$HOME/.local/share/dotfiles
 
 symlink() {
-	[ -f $2 ] && rm $2
-	ln -s $DOTFILES/$1 $2
+	ln -sfv $DOTFILES/$1 $2
 }
 
 symlink "starship/starship.toml" "$HOME/.config/starship.toml"
 symlink "zsh/zshrc" "$HOME/.zshrc"
-symlink "kitty" "$HOME/.config/kitty"
+symlink "wezterm/dot_wezterm.lua" "$HOME/.wezterm.lua"
 symlink "nvim" "$HOME/.config/nvim"
-

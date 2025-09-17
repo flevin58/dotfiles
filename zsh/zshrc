@@ -1,6 +1,6 @@
 # Add mystuff path
 export DOTFILES=$HOME/.local/share/dotfiles
-export FINROOT=$DOTFILES
+export PROJECTS=$HOME/Projects
 export EDITOR=nvim
 export PATH=$DOTFILES/bin:$DOTFILES/scripts:$HOME/.local/bin:$PATH
 export PATH=$HOME/go/bin:$PATH

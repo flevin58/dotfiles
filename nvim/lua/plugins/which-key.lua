@@ -9,7 +9,7 @@ vim.pack.add({
 })
 
 require("which-key").setup({
-	 {
+	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {

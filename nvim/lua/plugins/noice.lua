@@ -25,8 +25,8 @@ vim.pack.add({
 	}
 })
 
-require('noice').setup({
-		{
+require("noice").setup({
+	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -38,4 +38,3 @@ require('noice').setup({
 		}
 	}
 })
-

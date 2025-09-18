@@ -3,15 +3,15 @@
 --
 vim.pack.add({
 	{
-	    src = "https://github.com/stevearc/oil.nvim.git",
-	    name = "oil",
+		src = "https://github.com/stevearc/oil.nvim.git",
+		name = "oil",
 	}
 })
 
 vim.pack.add({
 	{
-	    src = "https://github.com/echasnovski/mini.icons.git",
-	    name = "mini-icons",
+		src = "https://github.com/echasnovski/mini.icons.git",
+		name = "mini-icons",
 	}
 })
 

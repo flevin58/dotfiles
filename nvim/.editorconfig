@@ -1,0 +1,7 @@
+# We are the topmost file to consider
+root = true
+
+[**.lua]
+indent_style = tab
+indent_aize = 4
+

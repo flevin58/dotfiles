@@ -6,6 +6,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ";"
 
 --
+-- Load the language servers
+--
+require("plugins.lspconfig")
+
+--
 -- Load configuration files
 --
 require("config.autocmds")
@@ -18,7 +23,6 @@ require("config.options")
 --
 require("plugins.conform")
 require("plugins.kanagawa")
-require("plugins.lspconfig")
 require("plugins.mini-starter")
 require("plugins.mini-statusline")
 require("plugins.noice")

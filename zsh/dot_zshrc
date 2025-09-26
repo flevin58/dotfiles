@@ -1,11 +1,14 @@
-# Add mystuff path
+# Add my own envs
 export DOTFILES=$HOME/.local/share/dotfiles
 export PROJECTS=$HOME/Projects
 export EDITOR=nvim
+export PLAYDATE_SDK_PATH=$HOME/Developer/PlaydateSDK
+
+# First priority PATH is MacPorts
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Add other PATHs
 export PATH=$DOTFILES/bin:$DOTFILES/scripts:$HOME/.local/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
-export LIBRARY_PATH="$(brew --prefix)/lib"
-export PLAYDATE_SDK_PATH=$HOME/Developer/PlaydateSDK
 
 # Do the magic!
 for zshfile in $DOTFILES/zsh/*.zsh; do source $zshfile; done

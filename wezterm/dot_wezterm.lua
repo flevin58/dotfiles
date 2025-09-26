@@ -15,7 +15,8 @@ config.line_height = 1.2
 --
 -- Color stuff
 --
-config.color_scheme = "catppuccin"
+--config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Classic Dark"
 config.colors = {
 	cursor_bg = "#7aa2f7",
 	cursor_border = "#ffffff",

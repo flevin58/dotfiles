@@ -6,6 +6,7 @@ alias la="ls -al"
 alias godev="cd $PROJECTS"
 alias gopro="cd $PROJECTS"
 alias godot="cd $DOTFILES"
+alias sport="sudo port"
 # Add go-related aliases
 alias gor="go run ."
 alias got="go test -v ./..."

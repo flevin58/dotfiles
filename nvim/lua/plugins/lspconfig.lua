@@ -24,4 +24,5 @@ vim.cmd("set completeopt+=noselect")
 vim.lsp.enable({
 	"gopls",
 	"lua_ls",
+	"rust",
 })

@@ -1,0 +1,56 @@
+folders:
+      #
+      # rust
+      #
+      - name: rust
+        actions:
+          - command:
+              cmd: "cargo install cargo-expand"
+          - command:
+              cmd: "cargo install cargo-generate"
+          - command:
+              cmd: "cargo install cargo-modules"
+              #cmd: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+      #
+      # rust for micro:bit
+      #
+      - name: microbit
+        actions:
+          - command:
+              cmd: "rustup target add thumbv7em-none-eabihf"
+      #
+      # lazyvim
+      #
+      - name: lazyvim
+        actions:
+          - link:
+                src: .
+                dst: $HOME/.config/nvim
+      #
+      # wezterm
+      #
+      - name: wezterm
+        actions:
+          - install:
+                what: wezterm
+          - link:
+                src: dot_wezterm.lua
+                dst: $HOME/.wezterm.lua
+      #
+      # starship
+      #
+      - name: starship
+        actions:
+          - install:
+                what: starship
+          - link:
+                src: starship.toml
+                dst: $HOME/.config/starship.toml
+      #
+      # zsh
+      #
+      - name: zsh
+        actions:
+          - link:
+                src: dot_zshrc
+                dst: $HOME/.zshrc

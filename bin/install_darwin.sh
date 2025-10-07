@@ -58,4 +58,3 @@ rsync -a $HOME/dotfiles/fonts/ $HOME/Library/Fonts
 #
 echo "Creating symlinks in $HOME"
 stow . --dotfiles
-

@@ -1,0 +1,22 @@
+# Do the magic!
+for zshfile in $DOTFILES/zsh/*.zsh; do source $zshfile; done
+
+# Add zsh plugins
+plugins=(
+	zsh-sutosuggestions
+	zsh-syntax-highlighting
+)
+
+# Add batman functionality
+export BAT_THEME="dracula"
+eval "$(batman --export-env)"
+
+# Add starship command prompt
+eval "$(starship init zsh)"
+
+# Add zoxide functionality
+eval "$(zoxide init zsh)"
+alias cd="z"
+
+# Kool computer info on screen
+neofetch

@@ -1,0 +1,12 @@
+export DOTFILES=$HOME/dotfiles
+export EDITOR=nvim
+
+# MacPorts
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+# Rust
+export PATH=$PATH:$HOME/.cargo/bin
+
+# Golang
+export GOPATH=$HOME/go
+export PATH=$PATH:$HOME/go/bin

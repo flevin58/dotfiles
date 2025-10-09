@@ -21,7 +21,7 @@ port_install eza
 port_install go
 port_install just
 port_install neovim nvim
-port_install starship
+port_install oh-my-posh
 port_install stow
 port_install tree
 port_install wget

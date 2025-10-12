@@ -6,7 +6,6 @@ assert_dotfiles
 assert_os Darwin
 assert_macports
 assert_sudo
-exit 0
 
 #
 # Self-update

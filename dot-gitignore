@@ -1,0 +1,9 @@
+# This file is the global gitignore for ALL projects
+# Create a soft link at ~/.gitignore that points to this file
+# Run `git config --global core.excludesfile ~/.gitignore`
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+.vscode

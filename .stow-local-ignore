@@ -1,15 +1,24 @@
+# Exclude git related stuff
+# =========================
 \.git
 \.gitignore
 \.gitmodules
 
+# Exclude local files
+# ===================
 ^/Justfile
-^/README.*
 ^/LICENSE.*
-^/omp
+^/README.*
 
-^/bin.*
-^/fonts.*
-^/zsh.*
+# Exclude local folders
+# =====================
+bin
+fonts
+omp
+zsh
 
+# Exclude everywhere!
+# ===================
 \.DS_Store
+\.DS_Store?
 .*\.bak

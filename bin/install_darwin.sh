@@ -25,11 +25,18 @@ port_install stow
 port_install tree
 port_install wget
 port_install xz
+port_install nvm
 
 #
 # Update apps
 #
 sudo port upgrade outdated
+
+#
+# Install the latest version of Node js
+#
+source "$HOME/.nvm/nvm.sh"
+nvm install node
 
 #
 # Install rust

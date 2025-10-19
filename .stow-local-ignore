@@ -2,13 +2,14 @@
 \.gitignore
 \.gitmodules
 
+^/Justfile
 ^/README.*
 ^/LICENSE.*
+^/omp
 
 ^/bin.*
 ^/fonts.*
 ^/zsh.*
 
 \.DS_Store
-
 .*\.bak

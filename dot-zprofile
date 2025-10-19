@@ -1,3 +1,4 @@
+export PROJECTS=$HOME/Projects
 export DOTFILES=$HOME/dotfiles
 export EDITOR=nvim
 

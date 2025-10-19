@@ -73,5 +73,8 @@ fi
 eval "$(zoxide init zsh)"
 alias cd="z"
 
+# Add node.js functionality
+source /opt/local/share/nvm/init-nvm.sh
+
 # Kool computer info on screen
 neofetch

@@ -7,8 +7,6 @@ alias la="ls -al"
 alias godev="cd $PROJECTS"
 alias gopro="cd $PROJECTS"
 alias godot="cd $DOTFILES"
-alias man="batman"
-alias sport="sudo port"
 # Add more advanced aliases
 alias edit="$EDITOR"
 alias remove="rm -rf"

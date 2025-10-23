@@ -12,10 +12,7 @@
 
 # Exclude local folders
 # =====================
-bin
-fonts
-omp
-zsh
+local
 
 # Exclude everywhere!
 # ===================

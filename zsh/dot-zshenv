@@ -23,7 +23,7 @@ export XDG_SCREENSHOTS_DIR="$HOME/Pictures/screenshots"
 export PATH=$PATH:$HOME/.local/bin
 
 # colors!
-export BAT_THEME="Catppuccin-mocha"
+export BAT_THEME="Catppuccin Mocha"
 export MANPAGER="nvim +Man!"
 
 # set the localization

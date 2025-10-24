@@ -28,8 +28,8 @@ HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
 # Set history related stuff
 HISTSIZE=5000
-HISTFILE=${HOME}/.zsh_history
 SAVEHIST=$HISTSIZE
+HISTFILE=${HOME}/.cache/zsh/history
 HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
@@ -58,3 +58,7 @@ alias cd="z"
 
 # Kool computer info on screen
 neofetch
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

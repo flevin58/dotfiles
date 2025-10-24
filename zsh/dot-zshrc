@@ -11,7 +11,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 BREW_PREFIX=$(brew --prefix)
 
 # Lazy-load antidote and generate the static load file only when needed
-zsh_plugins=$DOTFILES/local/zsh/plugins
+zsh_plugins=$HOME/.plugins
 if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
   (
     source $BREW_PREFIX/opt/antidote/share/antidote/antidote.zsh

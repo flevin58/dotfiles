@@ -33,7 +33,7 @@ function assert_os() {
 function assert_dotfiles() {
   # Dotfiles should be in $HOME and the current script shoul be in $HOME/dotfiles/bin
   script=$(realpath ${BASH_SOURCE[0]})
-  if [[ "$(dirname $script)" == "$HOME/dotfiles/local/bin" ]]; then
+  if [[ "$(dirname $script)" == "$HOME/.dotfiles/local/bin" ]]; then
     echo "Dotfiles correctly detected $OK_EMOJI"
   else
     echo "ERROR: the current script $script is not inside $HOME/dotfiles!"

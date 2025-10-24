@@ -15,6 +15,10 @@ brew update
 #
 # Install core apps
 #
+brew_install antidote
+brew_install fzf
+brew_install zoxide
+brew_install neofetch
 brew_install curl
 brew_install wget
 brew_install eza
@@ -23,6 +27,7 @@ brew_install oh-my-posh
 brew_install stow
 brew_install tree
 brew_install xz
+brew_install z
 brew_install nvm
 #
 # Install dev apps

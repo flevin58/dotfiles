@@ -2,9 +2,7 @@
 # This file will be linked to ~/.zshrc
 #
 
-export PROJECTS=$HOME/Projects
-export DOTFILES=$HOME/.dotfiles
-export EDITOR=nvim
+echo "Sourcing ~/.zshrc"
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -25,6 +23,17 @@ bindkey -v
 bindkey '^[[A' history-substring-search-up # or '\eOA'
 bindkey '^[[B' history-substring-search-down # or '\eOB'
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+# Use lf to change dirs using Ctrl-e
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+      dir="$(cat "$tmp")"
+      rm -f "$tmp"
+      [ -d "$dir" ] && [ $dir != "$(pwd)"] && cd "$dir"
+    fi
+}
+bindkey -s '^o' 'lfcd\n'
 
 # Set history related stuff
 HISTSIZE=5000

@@ -9,6 +9,7 @@ assert_sudo
 
 # Install nvm (NodeJS needed by neovim's treesitter)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+nvm install node
 
 #
 # Self-update
@@ -21,6 +22,7 @@ brew update
 brew_install antidote
 brew_install bat
 brew_install fzf
+brew_install lf
 brew_install zoxide
 brew_install neofetch
 brew_install curl

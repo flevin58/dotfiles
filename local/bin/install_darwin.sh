@@ -19,6 +19,7 @@ brew update
 # Install core apps
 #
 brew_install antidote
+brew_install bat
 brew_install fzf
 brew_install zoxide
 brew_install neofetch

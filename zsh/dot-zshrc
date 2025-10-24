@@ -39,6 +39,7 @@ bindkey -s '^o' 'lfcd\n'
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 HISTFILE=${HOME}/.cache/zsh/history
+test -d "$HOME/.cache/zsh" || mkdir -p "$HOME/.cache/zsh"
 HISTDUP=erase
 setopt appendhistory
 setopt sharehistory

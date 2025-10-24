@@ -13,14 +13,16 @@ config.font_size = 20
 config.line_height = 1.2
 
 --
--- Color stuff
+-- Color stuff (Theme: Catppuccin)
 --
---config.color_scheme = "Catppuccin Mocha"
-config.color_scheme = "Classic Dark"
-config.colors = {
-	cursor_bg = "#7aa2f7",
-	cursor_border = "#ffffff",
-}
+local function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "Catppuccin Mocha"
+	else
+		return "Catppuccin Latte"
+	end
+end
+config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
 
 --
 -- Windows / Tabs stuff

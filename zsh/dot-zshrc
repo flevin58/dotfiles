@@ -1,6 +1,13 @@
 #
 # This file will be linked to ~/.zshrc
 #
+
+export PROJECTS=$HOME/Projects
+export DOTFILES=$HOME/.dotfiles
+export EDITOR=nvim
+
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 BREW_PREFIX=$(brew --prefix)
 
 # Lazy-load antidote and generate the static load file only when needed

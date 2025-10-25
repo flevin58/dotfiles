@@ -1,20 +1,19 @@
 #! /bin/sh
-source $(dirname ${BASH_SOURCE[0]})/utils.sh
+source $DOTFILES/local/bin/utils.sh
 
 # Do some preliminary checks
 assert_dotfiles
 assert_os Darwin
 assert_brew
-assert_sudo
+
+#
+# Install gum for better messages!
+#
+brew_install gum
 
 # Install nvm (NodeJS needed by neovim's treesitter)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 nvm install node
-
-#
-# Self-update
-#
-brew update
 
 #
 # Install core apps
@@ -75,7 +74,8 @@ rsync -a $DOTFILES/local/fonts/ $HOME/Library/Fonts
 # Lastly run stow to create all symlinks in $HOME
 #
 echo "Creating symlinks in $HOME"
-dirlist=$(find $DOTFILES -type d -mindepth 1 -maxdepth 1 -exec basename {} \; | grep -v local | grep -v .git)
-for d in $dirlist; do
+#dirlist=$(find $DOTFILES -type d -mindepth 1 -maxdepth 1 -exec basename {} \; | grep -v local | grep -v .git)
+#for d in $dirlist; do
+for d in package_list; do
   stow $d --dotfiles
 done

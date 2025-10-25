@@ -4,9 +4,9 @@ help:
 assert:
   #!/bin/sh
   source local/bin/utils.sh
+  assert_sudo
   assert_os Darwin
   assert_macports
-  assert_sudo
 
 core:
   #!/bin/sh
@@ -30,3 +30,13 @@ git: assert
   test -x git || port_install git
   git config --global core.excludesFile '~/.gitignore_global'
   stow git --dotfiles
+
+stow:
+  #!/bin/sh
+  source local/bin/utils.sh
+  choices=$(package_list)
+  chosen=$(gum choose $choices --no-limit)
+  for p in $chosen; do
+    $(log_info "Stowing $p")
+    stow $p --dotfiles
+  done

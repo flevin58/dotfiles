@@ -1,7 +1,10 @@
-# For debug uncomment below:
-echo "Sourcing ~/.zshenv"
+#############################################
+# .zshenv                                   #
+# Gets sourced before .zshrc                #
+# Here are defined all global env vars      #
+#############################################
 
-# Added by cargo installation
+# Added by cargo homebrew installation
 . "$HOME/.cargo/env"
 
 # default apps

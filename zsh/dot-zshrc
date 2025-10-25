@@ -1,8 +1,8 @@
-#
-# This file will be linked to ~/.zshrc
-#
-
-echo "Sourcing ~/.zshrc"
+#############################################
+# .zshrc                                    #
+# Gets sourced at every terminal session    #
+# Uses global env vars defined in .zshenv   #
+#############################################
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"

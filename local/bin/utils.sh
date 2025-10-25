@@ -8,15 +8,44 @@ OK_EMOJI="👍"
 #
 # Utility functions for the installation script
 #
-function assert_sudo() {
-  wanted="(ALL) NOPASSWD: ALL"
-  nopw=$(sudo -l | grep "$wanted")
-  if [[ $nopw == "" ]]; then
-    echo "OOPS: looks like you don't have superuser powers! $ERROR_EMOJI"
-    echo "Run the command 'sudo visudo' and add at the bottom the following line:"
-    echo $(whoami) ALL = $wanted
+function command_found() {
+  command -v $1 >/dev/null 2>&1
+}
+
+function package_list() {
+  list=$(find $DOTFILES -type d -mindepth 1 -maxdepth 1 -exec basename {} \; | grep -v local | grep -v .git)
+  echo "${list[@]}"
+}
+
+function log_info() {
+  if command_found gum; then
+    gum log -l info $1
   else
-    echo "Congrats you are a superuser $OK_EMOJI"
+    echo "INFO: $1"
+  fi
+}
+
+function log_warn() {
+  if command_found gum; then
+    gum log -l warn $1
+  else
+    echo "WARN: $1"
+  fi
+}
+
+function log_error() {
+  if command_found gum; then
+    gum log -l error $1
+  else
+    echo "ERROR: $1"
+  fi
+}
+
+function log_fatal() {
+  if command_found gum; then
+    gum log -l fatal $1
+  else
+    echo "FATAL: $1"
   fi
 }
 
@@ -41,19 +70,8 @@ function assert_dotfiles() {
   fi
 }
 
-function assert_macports() {
-  if command -v port >/dev/null 2>&1; then
-    echo "MacPorts detected $OK_EMOJI"
-  else
-    echo "MacPorts is not installed $ERROR_EMOJI"
-    echo "Please install it manually and rerun this script."
-    echo "Follow the instructions here: https://www.macports.org/install.php"
-    exit 1
-  fi
-}
-
 function assert_brew() {
-  if command -v brew >/dev/null 2>&1; then
+  if command_found brew; then
     echo "Homebrew detected $OK_EMOJI"
   else
     echo "Homebrew is not installed $ERROR_EMOJI"
@@ -72,7 +90,7 @@ function port_install() {
     app=$2
   fi
 
-  if ! command -v $app >/dev/null 2>&1; then
+  if ! command_found $app; then
     echo "Installing $name"
     sudo port install $app
   else
@@ -89,7 +107,7 @@ function brew_install() {
     app=$2
   fi
 
-  if ! command -v $app >/dev/null 2>&1; then
+  if ! command_found $app; then
     echo "Installing $name"
     brew install $app
   else

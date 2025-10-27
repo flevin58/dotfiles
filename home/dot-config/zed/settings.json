@@ -12,32 +12,42 @@
       "enabled": false
     }
   },
-  "terminal": {
-    "dock": "right",
-    "font_size": 16,
-    "font_family": "FiraCode Nerd Font Mono"
-  },
+
+  "ui_font_size": 18,
+  "buffer_font_size": 16,
+  "buffer_font_weight": 500,
+  "buffer_line_height": { "custom": 1.6 },
   "show_whitespaces": "all",
+  "current_line_highlight": "none",
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
   //---------------------------------------------------------
-  // Theme
+  // Terminal
   //---------------------------------------------------------
-  "icon_theme": "Catppuccin Mocha",
-  "ui_font_size": 18,
-  "buffer_font_size": 16,
+  "terminal": {
+    "dock": "right",
+    "font_size": 16,
+    "font_family": "FiraCode Nerd Font Mono"
+  },
+  //---------------------------------------------------------
+  // Theme (for more themes visit https://zed.dev/docs/)
+  //---------------------------------------------------------
   "theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha"
   },
+  "icon_theme": "Catppuccin Mocha",
+  //---------------------------------------------------------
+  // File Types (for mapping unknown languages)
+  //---------------------------------------------------------
   "file_types": {
     "Shell Script": ["Justfile"]
   },
   //---------------------------------------------------------
-  // Languages
+  // Languages (to locally configure certain languages)
   //---------------------------------------------------------
   "languages": {
     "C": {
@@ -50,6 +60,10 @@
         }
       ],
       "format_on_save": "on"
+    },
+    "JSON": {
+      "tab_size": 4,
+      "hard_tabs": true
     }
   }
 }

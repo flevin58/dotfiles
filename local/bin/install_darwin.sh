@@ -40,7 +40,6 @@ brew_install zip
 #
 brew_install nvm
 brew_install just
-brew_install go
 brew_install zig
 log_info "🦀 Installing rust"
 brew_install rust
@@ -49,6 +48,12 @@ log_info "🦀 Installing cargo addons"
 cargo_install cargo-expand
 cargo_install cargo-generate
 cargo_install cargo-modules
+#
+# Golang (go compiler, delve debugger and gopls language server)
+#
+brew_install go
+gum spin --title "Installing gopls" -- go install golang.org/x/tools/gopls@latest
+gum spin --title "Installing delve" -- go install github.com/go-delve/delve/cmd/dlv@latest
 
 #
 # Update apps
@@ -89,7 +94,4 @@ gum spin -- rsync -a $DOTFILES/local/fonts/ $HOME/Library/Fonts
 # Lastly run stow to create all symlinks in $HOME
 #
 log_info "Creating symlinks in $HOME"
-dirlist=$(find $DOTFILES -type d -mindepth 1 -maxdepth 1 -exec basename {} \; | grep -v local | grep -v .git)
-for d in $dirlist; do
-  stow $d --dotfiles
-done
+stow -R home --dotfiles

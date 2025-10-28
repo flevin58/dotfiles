@@ -21,8 +21,6 @@ core:
   brew_install tree
   brew_install xz
 
-term:
-
 git: assert
   #!/bin/sh
   source local/bin/utils.sh

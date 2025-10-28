@@ -7,48 +7,55 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "git": {
-    "inline_blame": {
-      "enabled": false
-    }
-  },
-
   "ui_font_size": 18,
   "buffer_font_size": 16,
   "buffer_font_weight": 500,
   "buffer_line_height": { "custom": 1.6 },
   "show_whitespaces": "all",
   "current_line_highlight": "none",
+  "cursor_blink": false,
+  "wrap_guides": [80],
+  "show_wrap_guides": true,
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
-  //---------------------------------------------------------
+
+  //----------------------------------------------------------------------------
+  // GitHub stuff
+  //----------------------------------------------------------------------------
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+
+  //----------------------------------------------------------------------------
   // Terminal
-  //---------------------------------------------------------
+  //----------------------------------------------------------------------------
   "terminal": {
     "dock": "right",
     "font_size": 16,
     "font_family": "FiraCode Nerd Font Mono"
   },
-  //---------------------------------------------------------
+  //----------------------------------------------------------------------------
   // Theme (for more themes visit https://zed.dev/docs/)
-  //---------------------------------------------------------
+  //----------------------------------------------------------------------------
   "theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha"
   },
   "icon_theme": "Catppuccin Mocha",
-  //---------------------------------------------------------
+  //----------------------------------------------------------------------------
   // File Types (for mapping unknown languages)
-  //---------------------------------------------------------
-  "file_types": {
-    "Shell Script": ["Justfile"]
-  },
-  //---------------------------------------------------------
+  //----------------------------------------------------------------------------
+  // "file_types": {
+  //   "Shell Script": ["Justfile"]
+  // },
+  //----------------------------------------------------------------------------
   // Languages (to locally configure certain languages)
-  //---------------------------------------------------------
+  //----------------------------------------------------------------------------
   "languages": {
     "C": {
       "formatter": [
@@ -64,6 +71,10 @@
     "JSON": {
       "tab_size": 4,
       "hard_tabs": true
+    },
+    "Markdown": {
+      "format_on_save": "on",
+      "remove_trailing_whitespace_on_save": false
     }
   }
 }

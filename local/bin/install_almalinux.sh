@@ -67,11 +67,9 @@ alma_install zig
 
 gum spin --title "Installing fzf" -- git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 $HOME/.fzf/install
-#alma_install zoxide
 
 log_info "🦀 Installing rust"
-alma_install rust
-alma_install cargo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 log_info "🦀 Installing cargo addons"
 cargo_install cargo-expand
 cargo_install cargo-generate

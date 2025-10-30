@@ -44,10 +44,7 @@ gum spin --title "Updating dnf" sudo dnf -y update
 # Install core apps
 #
 alma_install bat
-alma_install fzf
 alma_install lf
-alma_install zoxide
-alma_install neofetch
 alma_install curl
 alma_install wget
 alma_install eza
@@ -64,7 +61,14 @@ alma_install zip
 alma_install nvm
 alma_install just
 alma_install zig
-exit 0
+#
+# Install apps not present in dnf
+#
+
+gum spin --title "Installing fzf" -- git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+$HOME/.fzf/install
+#alma_install zoxide
+
 log_info "🦀 Installing rust"
 alma_install rust
 alma_install rustup
@@ -72,6 +76,9 @@ log_info "🦀 Installing cargo addons"
 cargo_install cargo-expand
 cargo_install cargo-generate
 cargo_install cargo-modules
+cargo_install hyfetch
+
+exit 0
 
 # Install NodeJS via nvm (needed by neovim's treesitter)
 if command_found node; then

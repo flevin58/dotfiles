@@ -4,9 +4,6 @@
 # Here are defined all global env vars      #
 #############################################
 
-# Added by cargo homebrew installation
-. "$HOME/.cargo/env"
-
 # default apps
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$HOME/.dotfiles"

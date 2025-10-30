@@ -24,7 +24,7 @@ gum spin --title "Installing delve" -- go install github.com/go-delve/delve/cmd/
 # Zsh
 #
 alma_install zsh
-sudo chsh -s /bin/zsh $USER
+gum spin --title "Setting default shell" -- sudo chsh -s /bin/zsh $USER
 
 #
 # Zsh plugins

@@ -11,11 +11,23 @@ assert_dotfiles
 assert_os Linux
 
 #
-# Install gum for better messages!
+# Golang && Gum (go compiler, delve debugger and gopls language server)
 #
 echo "Installing prerequisites: go and gum"
-alma_install -y go
+alma_install golang-bin
+export PATH=$PATH:/$HOME/go/bin
 run_silent go install github.com/charmbracelet/gum@latest
+gum spin --title "Installing gopls" -- go install golang.org/x/tools/gopls@latest
+gum spin --title "Installing delve" -- go install github.com/go-delve/delve/cmd/dlv@latest
+
+#
+# Zsh
+#
+alma install zsh
+ANTIDOTE_DIR=${ZDOTDIR:-~}/.antidote
+if [ ! -d $ANTIDOTE_DIR ]; then
+	git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+fi
 
 #
 # Update dnf
@@ -55,17 +67,6 @@ log_info "🦀 Installing cargo addons"
 cargo_install cargo-expand
 cargo_install cargo-generate
 cargo_install cargo-modules
-#
-# Golang (go compiler, delve debugger and gopls language server)
-#
-alma_install go
-gum spin --title "Installing gopls" -- go install golang.org/x/tools/gopls@latest
-gum spin --title "Installing delve" -- go install github.com/go-delve/delve/cmd/dlv@latest
-
-#
-# Update apps
-#
-gum spin --title "Upgrading brew" -- brew upgrade
 
 # Install NodeJS via nvm (needed by neovim's treesitter)
 if command_found node; then

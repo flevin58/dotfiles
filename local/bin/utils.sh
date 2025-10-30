@@ -114,11 +114,16 @@ function alma_install() {
   app=$1
   if ! alma_installed $app; then
 	  if command_found gum; then
-	    gum spin --title "Installing $app" -- brew install $app
+	    gum spin --title "Installing $app" -- sudo dnf install -y $app
 	  else
 	    echo "Installing $app"
 	    run_silent sudo dnf install -y $app
 	  fi
+	    if [ $? -eq 0 ]; then
+	      log_info "Succesfully installed $app $OK_EMOJI"
+	    else
+	      log_error "Error installing $app $ERROR_EMOJI"
+	    fi
   else
     log_info "Already installed: $app"
   fi

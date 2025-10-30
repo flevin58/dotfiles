@@ -10,7 +10,7 @@
 # default apps
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$HOME/.dotfiles"
-export EDITOR="nvim"
+export EDITOR="zed"
 export VISUAL="nvim"
 export TERMINAL="wezterm"
 export BROWSER="safari"

@@ -4,6 +4,7 @@
 ICLOUD_DOCS="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
 ERROR_EMOJI="❌"
 OK_EMOJI="👍"
+DOTFILES=$HOME/.dotfiles
 
 #
 # Utility functions for the installation script
@@ -103,6 +104,24 @@ function cargo_install() {
 
 function brew_installed() {
   brew list | grep $1 &>/dev/null
+}
+
+function alma_installed() {
+  dnf list --installed | grep $1 &>/dev/null
+}
+
+function alma_install() {
+  app=$1
+  if ! alma_installed $app; then
+	  if command_found gum; then
+	    gum spin --title "Installing $app" -- brew install $app
+	  else
+	    echo "Installing $app"
+	    run_silent sudo dnf install -y $app
+	  fi
+  else
+    log_info "Already installed: $app"
+  fi
 }
 
 function brew_install() {

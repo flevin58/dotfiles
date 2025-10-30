@@ -4,6 +4,7 @@ if [ ! -e $UTILS ]; then
 	echo "Utils not found in $UTILS"
 	exit 1
 fi
+source $HOME/.dotfiles/dot-zshenv
 source $UTILS
 
 # Do some preliminary checks

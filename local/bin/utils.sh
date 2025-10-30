@@ -29,7 +29,7 @@ function log_info() {
   if command_found gum; then
     gum log -l info $1
   else
-    echo "INFO: $1"
+    echo "INFO $1"
   fi
 }
 
@@ -37,7 +37,7 @@ function log_warn() {
   if command_found gum; then
     gum log -l warn $1
   else
-    echo "WARN: $1"
+    echo "WARN $1"
   fi
 }
 
@@ -45,7 +45,7 @@ function log_error() {
   if command_found gum; then
     gum log -l error $1
   else
-    echo "ERROR: $1"
+    echo "ERROR $1"
   fi
 }
 
@@ -53,7 +53,7 @@ function log_fatal() {
   if command_found gum; then
     gum log -l fatal $1
   else
-    echo "FATAL: $1"
+    echo "FATAL $1"
   fi
 }
 

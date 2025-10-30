@@ -37,7 +37,7 @@ fi
 #
 # Update dnf
 #
-gum spin --title "Updating dnf" sudo dnf update
+gum spin --title "Updating dnf" sudo dnf -y update
 
 #
 # Install core apps

@@ -71,7 +71,7 @@ $HOME/.fzf/install
 
 log_info "🦀 Installing rust"
 alma_install rust
-alma_install rustup
+alma_install cargo
 log_info "🦀 Installing cargo addons"
 cargo_install cargo-expand
 cargo_install cargo-generate

@@ -23,10 +23,15 @@ gum spin --title "Installing delve" -- go install github.com/go-delve/delve/cmd/
 #
 # Zsh
 #
-alma install zsh
-ANTIDOTE_DIR=${ZDOTDIR:-~}/.antidote
+alma_install zsh
+sudo chsh -s /bin/zsh $USER
+
+#
+# Zsh plugins
+#
+ANTIDOTE_DIR=$HOME/.antidote
 if [ ! -d $ANTIDOTE_DIR ]; then
-	git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+	gum spin --title "Installing antidote" -- git clone --depth=1 https://github.com/mattmc3/antidote.git $ANTIDOTE_DIR
 fi
 
 #
@@ -37,7 +42,6 @@ gum spin --title "Updating dnf" sudo dnf update
 #
 # Install core apps
 #
-alma_install antidote
 alma_install bat
 alma_install fzf
 alma_install lf

@@ -12,6 +12,12 @@ assert_brew
 gum spin --title "Updating brew" brew update
 
 #
+# Install zshell
+#
+brew_install zsh
+sudo chsh -s /bin/zsh $USER
+
+#
 # Install gum for better messages!
 #
 brew_install gum

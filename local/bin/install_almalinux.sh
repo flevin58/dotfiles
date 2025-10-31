@@ -48,7 +48,7 @@ gum spin --title "Updating dnf" sudo dnf -y update
 #
 # Install core apps
 #
-alma_install fastscreen
+alma_install fastfetch
 alma_install bat
 alma_install lf
 alma_install curl

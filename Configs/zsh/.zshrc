@@ -4,6 +4,11 @@
 # Uses global env vars defined in .zshenv   #
 #############################################
 
+# Make sure DOTFILES is defined
+if [ -z "$DOTFILES" ]; then
+  source "$HOME/.zshenv"
+fi
+
 # Load antidote and plugins in "$HOME/.zsh_plugins.txt"
 if [ ! -d "$HOME/.antidote" ]; then
         git clone --depth=1 https://github.com/mattmc3/antidote.git "$HOME/.antidote"
@@ -46,7 +51,7 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Do the magic and source any .zsh file in local/zsh !!!
-for zshfile in $HOME/.dotfiles/local/zsh/*.zsh; do
+for zshfile in "$DOTFILES/local/zsh/*.zsh"; do
   source $zshfile;
 done
 
@@ -55,7 +60,7 @@ done
 
 # Add oh-my-posh command prompt
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $HOME/.dotfiles/local/omp/config.toml)"
+  eval "$(oh-my-posh init zsh --config $DOTFILES/local/omp/config.toml)"
 fi
 
 # Add zoxide functionality

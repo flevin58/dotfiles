@@ -54,12 +54,19 @@ alma_install fzf
 alma_install lf
 alma_install curl
 alma_install wget
-alma_install neovim
 alma_install oh-my-posh
 alma_install tree
 alma_install xz
 alma_install z
 alma_install zip
+
+#
+# Install neovim latest release (for arm64 architecture)
+# Note: folders bin/, lib/, share/ will be overwritten in /usr
+#
+NVIM_LATEST_URL="https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-arm64.tar.gz"
+sudo curl -sL $NVIM_LATEST_URL | tar xzf - -C /usr --strip-components=1
+
 #
 # Install dev apps
 #

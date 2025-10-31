@@ -1,10 +1,11 @@
 #! /bin/sh
-UTILS=$HOME/.dotfiles/local/bin/utils.sh
+DOTFILES=${DOTFILES:-$HOME/.config/dotfiles}
+UTILS=$DOTFILES/local/bin/utils.sh
 if [ ! -e $UTILS ]; then
 	echo "Utils not found in $UTILS"
 	exit 1
 fi
-source $HOME/.dotfiles/home/dot-zshenv
+source $DOTFILES/Configs/zsh/.zshenv
 source $UTILS
 
 # Do some preliminary checks

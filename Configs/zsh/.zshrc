@@ -55,8 +55,8 @@ for zshfile in $HOME/.config/zsh/*.zsh; do
   source $zshfile;
 done
 
-# Add FuzzyFind integration
-# eval "$(fzf --zsh)"
+Add FuzzyFind integration
+eval "$(fzf --zsh)"
 
 # Add oh-my-posh command prompt
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
@@ -67,9 +67,9 @@ fi
 # eval "$(zoxide init zsh)"
 # alias cd="z"
 
+# Enable zsh completions
+autoload -Uz compinit
+compinit
+
 # Kool computer info on screen (default config located at ~/.config/fastfetch/config.conf)
 fastfetch
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

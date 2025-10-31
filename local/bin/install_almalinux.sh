@@ -76,7 +76,11 @@ cargo_install cargo-modules
 cargo_install eza
 cargo_install hyfetch
 
-exit 0
+#
+# oh-my-posh and Fira Code fonts installation
+#
+curl -s https://ohmyposh.dev/install.sh | bash -s
+gum spin --title "Installing Fira Code Mono font" -- oh-my-posh font install FiraMono
 
 # Install NodeJS via nvm (needed by neovim's treesitter)
 if command_found node; then
@@ -101,11 +105,6 @@ else
   wget -q -P "$themedir" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
   run_silent bat cache --build
 fi
-
-#
-# Fira Code fonts installation
-#
-gum spin --title "Installing Fira Code Mono font" -- oh-my-posh font install FiraMono
 
 #
 # Lastly run stow to create all symlinks in $HOME

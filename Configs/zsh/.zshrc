@@ -13,7 +13,7 @@ fi
 if [ ! -d "$HOME/.antidote" ]; then
         git clone --depth=1 https://github.com/mattmc3/antidote.git "$HOME/.antidote"
 fi
-source "$HOME/.antidote"
+source "$HOME/.antidote/antidote.zsh"
 antidote load
 
 # Set key bindings to zsh

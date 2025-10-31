@@ -4,7 +4,7 @@
 ICLOUD_DOCS="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
 ERROR_EMOJI="❌"
 OK_EMOJI="👍"
-DOTFILES=$HOME/.dotfiles
+DOTFILES=${DOTFILES:-$HOME/.config/dotfiles}
 
 #
 # Utility functions for the installation script
@@ -21,7 +21,7 @@ function command_found() {
 }
 
 function package_list() {
-  list=$(find $DOTFILES -type d -mindepth 1 -maxdepth 1 -exec basename {} \; | grep -v local | grep -v .git)
+  list=$(find $DOTFILES/Configs -type d -mindepth 1 -maxdepth 1 -exec basename {} \; | grep -v local | grep -v .git)
   echo "${list[@]}"
 }
 

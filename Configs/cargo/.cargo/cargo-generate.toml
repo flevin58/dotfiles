@@ -1,0 +1,11 @@
+[favorites.nando]
+description = "A series of templates to get started!"
+git = "https://github.com/flevin58/cargo-generate-templates"
+
+[favorites.slint]
+description = "Official slint template"
+git = "https://github.com/slint-ui/slint-rust-template"
+
+[favorites.arduino]
+description = "Arduino rust template"
+git = "https://github.com/Rahix/avr-hal-template.git"

@@ -51,7 +51,7 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Do the magic and source any .zsh file in local/zsh !!!
-for zshfile in "$DOTFILES/local/zsh/*.zsh"; do
+for zshfile in $HOME/.config/zsh/*.zsh; do
   source $zshfile;
 done
 

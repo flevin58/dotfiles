@@ -109,13 +109,12 @@ else
 fi
 
 #
-# Fonts
+# Fira Code fonts installation
 #
-log_info "Installing fonts"
-gum spin -- rsync -a $HOME/.dotfiles/local/fonts/ $HOME/Library/Fonts
+gum spin --title "Installing Fira Code Mono font" -- oh-my-posh font install FiraMono
 
 #
 # Lastly run stow to create all symlinks in $HOME
 #
-log_info "Creating symlinks in $HOME"
-stow -R home --dotfiles
+log_info "Creating dotfiles symlinks"
+tuckr add --force \*

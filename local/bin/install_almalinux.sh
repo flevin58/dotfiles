@@ -17,7 +17,6 @@ assert_os Linux
 #
 echo "Installing prerequisites: go and gum"
 alma_install golang-bin
-export PATH=$PATH:/$HOME/go/bin
 run_silent go install github.com/charmbracelet/gum@latest
 gum spin --title "Installing gopls" -- go install golang.org/x/tools/gopls@latest
 gum spin --title "Installing delve" -- go install github.com/go-delve/delve/cmd/dlv@latest

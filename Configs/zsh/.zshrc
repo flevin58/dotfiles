@@ -60,14 +60,14 @@ done
 
 # Add oh-my-posh command prompt
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $DOTFILES/local/omp/config.toml)"
+  eval "$(oh-my-posh init zsh --config $HOME/.config/omp/config.toml)"
 fi
 
 # Add zoxide functionality
 # eval "$(zoxide init zsh)"
 # alias cd="z"
 
-# Kool computer info on screen
+# Kool computer info on screen (default config located at ~/.config/fastfetch/config.conf)
 fastfetch
 
 # export NVM_DIR="$HOME/.nvm"

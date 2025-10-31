@@ -1,7 +1,0 @@
-# Exclude rubbish
-\.DS_Store
-\.DS_Store?
-.*\.bak
-
-# Exclude installation scripts
-install\.zsh

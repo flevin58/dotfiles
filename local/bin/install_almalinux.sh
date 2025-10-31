@@ -22,13 +22,18 @@ gum spin --title "Installing gopls" -- go install golang.org/x/tools/gopls@lates
 gum spin --title "Installing delve" -- go install github.com/go-delve/delve/cmd/dlv@latest
 
 #
+#
+# Enable the EPEL (Extra Packages for Enterprise Linux) repository
+#
+gum spin --title "Installing EPEL (Extra Packages)" -- sudo dnf install -y epel-release
+
 # Zsh
 #
 alma_install zsh
 gum spin --title "Setting default shell" -- sudo chsh -s /bin/zsh $USER
 
 #
-# Zsh plugins
+# Zsh plugin manager
 #
 ANTIDOTE_DIR=$HOME/.antidote
 if [ ! -d $ANTIDOTE_DIR ]; then
@@ -43,6 +48,7 @@ gum spin --title "Updating dnf" sudo dnf -y update
 #
 # Install core apps
 #
+alma_install fastscreen
 alma_install bat
 alma_install lf
 alma_install curl

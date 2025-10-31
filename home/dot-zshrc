@@ -4,36 +4,32 @@
 # Uses global env vars defined in .zshenv   #
 #############################################
 
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-BREW_PREFIX=$(brew --prefix)
-
-# Lazy-load antidote and generate the static load file only when needed
-zsh_plugins=$HOME/.plugins
-if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
-  (
-    source $BREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
-    antidote bundle <${zsh_plugins}.txt >${zsh_plugins}.zsh
-  )
+# Load antidote and plugins in "$HOME/.zsh_plugins.txt"
+if [ ! -d "$HOME/.antidote" ]; then
+        git clone --depth=1 https://github.com/mattmc3/antidote.git "$HOME/.antidote"
 fi
-source ${zsh_plugins}.zsh
+source "$HOME/.antidote"
+antidote load
 
 # Set key bindings to zsh
 bindkey -v
 bindkey '^[[A' history-substring-search-up # or '\eOA'
 bindkey '^[[B' history-substring-search-down # or '\eOB'
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+
+#
 # Use lf to change dirs using Ctrl-e
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-      dir="$(cat "$tmp")"
-      rm -f "$tmp"
-      [ -d "$dir" ] && [ $dir != "$(pwd)"] && cd "$dir"
-    fi
-}
-bindkey -s '^o' 'lfcd\n'
+#
+# lfcd () {
+#     tmp="$(mktemp)"
+#     lf -last-dir-path="$tmp" "$@"
+#     if [ -f "$tmp" ]; then
+#       dir="$(cat "$tmp")"
+#       rm -f "$tmp"
+#       [ -d "$dir" ] && [ $dir != "$(pwd)"] && cd "$dir"
+#     fi
+# }
+# bindkey -s '^e' 'lfcd\n'
 
 # Set history related stuff
 HISTSIZE=5000
@@ -50,25 +46,25 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Do the magic and source any .zsh file in local/zsh !!!
-for zshfile in ${DOTFILES}/local/zsh/*.zsh; do
+for zshfile in $HOME/.dotfiles/local/zsh/*.zsh; do
   source $zshfile;
 done
 
 # Add FuzzyFind integration
-eval "$(fzf --zsh)"
+# eval "$(fzf --zsh)"
 
 # Add oh-my-posh command prompt
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config ${DOTFILES}/local/omp/config.toml)"
+  eval "$(oh-my-posh init zsh --config $HOME/.dotfiles/local/omp/config.toml)"
 fi
 
 # Add zoxide functionality
-eval "$(zoxide init zsh)"
-alias cd="z"
+# eval "$(zoxide init zsh)"
+# alias cd="z"
 
 # Kool computer info on screen
-neofetch
+fastfetch
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

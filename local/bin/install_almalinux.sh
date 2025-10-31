@@ -50,13 +50,12 @@ gum spin --title "Updating dnf" sudo dnf -y update
 #
 alma_install fastfetch
 alma_install bat
+alma_install fzf
 alma_install lf
 alma_install curl
 alma_install wget
-alma_install eza
 alma_install neovim
 alma_install oh-my-posh
-alma_install stow
 alma_install tree
 alma_install xz
 alma_install z
@@ -67,12 +66,6 @@ alma_install zip
 alma_install nvm
 alma_install just
 alma_install zig
-#
-# Install apps not present in dnf
-#
-
-gum spin --title "Installing fzf" -- git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-$HOME/.fzf/install
 
 log_info "🦀 Installing rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -80,6 +73,7 @@ log_info "🦀 Installing cargo addons"
 cargo_install cargo-expand
 cargo_install cargo-generate
 cargo_install cargo-modules
+cargo_install eza
 cargo_install hyfetch
 
 exit 0

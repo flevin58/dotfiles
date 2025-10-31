@@ -123,6 +123,7 @@ function alma_install() {
 	      log_info "Succesfully installed $app $OK_EMOJI"
 	    else
 	      log_error "Error installing $app $ERROR_EMOJI"
+        exit 1
 	    fi
   else
     log_info "Already installed: $app"

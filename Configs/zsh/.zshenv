@@ -20,7 +20,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_SCREENSHOTS_DIR="$HOME/Pictures/screenshots"
 
 # adding useful paths
-export PATH=$PATH:$HOME/.local/bin:$HOME/go/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin
 
 # colors!
 export BAT_THEME="Catppuccin Mocha"

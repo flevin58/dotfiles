@@ -68,6 +68,13 @@ NVIM_LATEST_URL="https://github.com/neovim/neovim/releases/download/v0.11.4/nvim
 sudo curl -sL $NVIM_LATEST_URL | tar xzf - -C /usr --strip-components=1
 
 #
+# Install Visual Studio Code
+#
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+alma_install code
+
+#
 # Install dev apps
 #
 alma_install nvm

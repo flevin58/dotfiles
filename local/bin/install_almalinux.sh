@@ -67,14 +67,14 @@ alma_install zip
 # Note: folders bin/, lib/, share/ will be overwritten in /usr
 #
 NVIM_LATEST_URL="https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-arm64.tar.gz"
-sudo curl -sL $NVIM_LATEST_URL | tar xzf - -C /usr --strip-components=1
+curl -sL $NVIM_LATEST_URL | sudo tar xzf - -C /usr --strip-components=1
 log_installed_status "neovim"
 
 #
 # Install fastfetch
 #
 FASTFETCH_URL="https://github.com/fastfetch-cli/fastfetch/releases/download/2.54.0/fastfetch-linux-aarch64.tar.gz"
-sudo curl -sL $FASTFETCH_URL  | tar xzf - -C /usr --strip-components=2
+curl -sL $FASTFETCH_URL  | sudo tar xzf - -C /usr --strip-components=2
 log_installed_status "fastfetch"
 
 #
@@ -89,7 +89,6 @@ alma_install code
 #
 alma_install nvm
 alma_install just
-alma_install zig
 
 log_info "🦀 Installing rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -109,13 +108,16 @@ curl -s https://ziglang.org/builds/zig-aarch64-linux-0.16.0-dev.1204+389368392.t
 # oh-my-posh and Fira Code fonts installation
 #
 curl -s https://ohmyposh.dev/install.sh | bash -s
+log_installed "oh-my-posh"
 gum spin --title "Installing Fira Code Mono font" -- oh-my-posh font install FiraMono
+log_installed "Fira Code Mono font"
 
 # Install NodeJS via nvm (needed by neovim's treesitter)
 if command_found node; then
   log_info "Already installed: NodeJS"
 else
   gum spin --title "Installing NodeJS" -- nvm install node
+  log_installed "NodeJS"
 fi
 
 #
@@ -133,6 +135,7 @@ else
   wget -q -P "$themedir" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
   wget -q -P "$themedir" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
   run_silent bat cache --build
+  log_installed "Catppuccin bat theme"
 fi
 
 #

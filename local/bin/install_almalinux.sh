@@ -101,6 +101,11 @@ cargo_install eza
 cargo_install hyfetch
 
 #
+# Install Zig latest dev version (for arm64 architecture)
+#
+curl -s https://ziglang.org/builds/zig-aarch64-linux-0.16.0-dev.1204+389368392.tar.xz | tar -xf - -C $HOME/.local/bin
+
+#
 # oh-my-posh and Fira Code fonts installation
 #
 curl -s https://ohmyposh.dev/install.sh | bash -s

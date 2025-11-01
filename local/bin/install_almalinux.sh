@@ -14,12 +14,15 @@ assert_os Linux
 assert_network
 
 #
+# Install gum for better terminal UIs
+#
+alma_install gum
+
+#
 # Golang && Gum (go compiler, delve debugger and gopls language server)
 #
 echo "Installing prerequisites: go and gum"
 alma_install golang-bin
-run_silent go install github.com/charmbracelet/gum@latest
-log_installed "gum"
 gum spin --title "Installing gopls" -- go install golang.org/x/tools/gopls@latest
 log_installed "gopls"
 gum spin --title "Installing delve" -- go install github.com/go-delve/delve/cmd/dlv@latest
@@ -43,7 +46,7 @@ gum spin --title "Setting default shell" -- sudo chsh -s /bin/zsh $USER
 ANTIDOTE_DIR=$HOME/.antidote
 if [ ! -d $ANTIDOTE_DIR ]; then
 	gum spin --title "Installing antidote" -- git clone --depth=1 https://github.com/mattmc3/antidote.git $ANTIDOTE_DIR
-  $?=0 && log_installed "antidote"
+  log_installed "antidote"
 fi
 
 #

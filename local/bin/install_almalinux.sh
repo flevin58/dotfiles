@@ -11,6 +11,7 @@ source $UTILS
 # Do some preliminary checks
 assert_dotfiles
 assert_os Linux
+assert_network
 
 #
 # Golang && Gum (go compiler, delve debugger and gopls language server)

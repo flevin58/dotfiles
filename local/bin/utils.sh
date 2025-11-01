@@ -6,24 +6,13 @@ ERROR_EMOJI="❌"
 OK_EMOJI="👍"
 DOTFILES=${DOTFILES:-$HOME/.config/dotfiles}
 
-#
+###############################################
 # Utility functions for the installation script
-#
+###############################################
 
-function run_silent() {
-  cmd=$1
-  shift
-  shhhh=$($cmd $@)
-}
-
-function command_found() {
-  run_silent command -v $1
-}
-
-function package_list() {
-  list=$(find $DOTFILES/Configs -type d -mindepth 1 -maxdepth 1 -exec basename {} \; | grep -v local | grep -v .git)
-  echo "${list[@]}"
-}
+#----------------------------------------------
+# Logging functions
+#----------------------------------------------
 
 function log_info() {
   if command_found gum; then
@@ -57,6 +46,28 @@ function log_fatal() {
   fi
 }
 
+function log_installed_status() {
+  if [ $? -eq 0 ]; then
+    log_info "Succesfully installed $1 $OK_EMOJI"
+  else
+    log_error "Error installing $1 $ERROR_EMOJI"
+    exit 1
+  fi
+}
+
+#----------------------------------------------
+# Test functions
+#----------------------------------------------
+
+# Check if a command exists
+# Usage: command_found <command_name>
+# Returns 0 (true) if found, 1 (false) otherwise
+function command_found() {
+  run_silent command -v $1
+}
+
+# Assert that we are running on the expected OS
+# Usage: assert_os <Expected_OS_Name>
 function assert_os() {
   os=$(uname -s)
   if [[ "$os" == "$1" ]]; then
@@ -67,8 +78,20 @@ function assert_os() {
   fi
 }
 
+function assert_network() {
+  PROXY="proxy.google.org"
+  if run_silent nslookup $PROXY; then
+    log_info "Network working as expected $OK_EMOJI"
+  else
+    log_fatal "Could not reach the proxy: $PROXY $ERROR_EMOJI"
+    exit 1
+  fi
+}
+
+# Assert that dotfiles are in the expected location
+# Usage: assert_dotfiles
 function assert_dotfiles() {
-  # Dotfiles should be in $HOME and the current script shoul be in $HOME/dotfiles/bin
+  # Dotfiles should be in $HOME/.config/dotfiles and the current script should be in $HOME/.config/dotfiles/bin
   script=$(realpath ${BASH_SOURCE[0]})
   if [[ "$(dirname $script)" == "$DOTFILES/local/bin" ]]; then
     log_info "Dotfiles correctly detected $OK_EMOJI"
@@ -78,6 +101,8 @@ function assert_dotfiles() {
   fi
 }
 
+# Assert that Homebrew is installed
+# Usage: assert_brew
 function assert_brew() {
   if command_found brew; then
     log_info "Homebrew detected $OK_EMOJI"
@@ -87,15 +112,27 @@ function assert_brew() {
   fi
 }
 
-function log_installed_status() {
-  if [ $? -eq 0 ]; then
-    log_info "Succesfully installed $1 $OK_EMOJI"
-  else
-    log_error "Error installing $1 $ERROR_EMOJI"
-    exit 1
-  fi
+#----------------------------------------------
+# Run & Install functions
+#----------------------------------------------
+
+# Run a command silently
+# Usage: run_silent <command> [args...]
+function run_silent() {
+  cmd=$1
+  shift
+  shhhh=$($cmd $@)
 }
 
+# Get the list of packages from the Configs folder
+# Usage: list=$(package_list)
+function package_list() {
+  list=$(find $DOTFILES/Configs -type d -mindepth 1 -maxdepth 1 -exec basename {} \; | grep -v local | grep -v .git)
+  echo "${list[@]}"
+}
+
+# Install a cargo package if not already installed
+# Usage: cargo_install <package-name>
 function cargo_install() {
   arg=$1
   cmd=${arg##*-}
@@ -107,14 +144,20 @@ function cargo_install() {
   log_installed_status $arg
 }
 
+# Check if a brew package is installed
+# Usage: brew_installed <package-name>
 function brew_installed() {
   brew list | grep $1 &>/dev/null
 }
 
+# Check if an alma package is installed
+# Usage: alma_installed <package-name>
 function alma_installed() {
   dnf list --installed | grep $1 &>/dev/null
 }
 
+# Install a package using alma if not already installed
+# Usage: alma_install <package-name>
 function alma_install() {
   app=$1
   if ! alma_installed $app; then
@@ -130,6 +173,8 @@ function alma_install() {
   fi
 }
 
+# Install a package using brew if not already installed
+# Usage: brew_install <package-name>
 function brew_install() {
   app=$1
   if ! brew_installed $app; then
@@ -145,6 +190,8 @@ function brew_install() {
   fi
 }
 
+# Remove a file, directory or symlink after logging the action
+# Usage: remove <path>
 function remove() {
   if [[ -d $1 ]]; then
     log_info "Deleting directory $1"

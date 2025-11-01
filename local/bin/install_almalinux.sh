@@ -19,15 +19,19 @@ assert_network
 echo "Installing prerequisites: go and gum"
 alma_install golang-bin
 run_silent go install github.com/charmbracelet/gum@latest
+log_installed "gum"
 gum spin --title "Installing gopls" -- go install golang.org/x/tools/gopls@latest
+log_installed "gopls"
 gum spin --title "Installing delve" -- go install github.com/go-delve/delve/cmd/dlv@latest
+log_installed "delve"
 
-#
 #
 # Enable the EPEL (Extra Packages for Enterprise Linux) repository
 #
 gum spin --title "Installing EPEL (Extra Packages)" -- sudo dnf install -y epel-release
+log_installed "EPEL (Extra Packages)"
 
+#
 # Zsh
 #
 alma_install zsh
@@ -39,6 +43,7 @@ gum spin --title "Setting default shell" -- sudo chsh -s /bin/zsh $USER
 ANTIDOTE_DIR=$HOME/.antidote
 if [ ! -d $ANTIDOTE_DIR ]; then
 	gum spin --title "Installing antidote" -- git clone --depth=1 https://github.com/mattmc3/antidote.git $ANTIDOTE_DIR
+  $?=0 && log_installed "antidote"
 fi
 
 #
@@ -54,7 +59,6 @@ alma_install fzf
 alma_install lf
 alma_install curl
 alma_install wget
-alma_install oh-my-posh
 alma_install tree
 alma_install xz
 alma_install z

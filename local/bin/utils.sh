@@ -46,7 +46,7 @@ function log_fatal() {
   fi
 }
 
-function log_installed_status() {
+function log_installed() {
   if [ $? -eq 0 ]; then
     log_info "Succesfully installed $1 $OK_EMOJI"
   else
@@ -78,8 +78,10 @@ function assert_os() {
   fi
 }
 
+# Assert that network is working
+# Usage: assert_network
 function assert_network() {
-  PROXY="proxy.google.org"
+  PROXY="proxy.golang.org"
   if run_silent nslookup $PROXY; then
     log_info "Network working as expected $OK_EMOJI"
   else
@@ -141,7 +143,7 @@ function cargo_install() {
     return
   fi
   gum spin --title "Installing $arg" -- cargo install $arg
-  log_installed_status $arg
+  log_installed $arg
 }
 
 # Check if a brew package is installed
@@ -167,7 +169,7 @@ function alma_install() {
 	    echo "Installing $app"
 	    run_silent sudo dnf install -y $app
 	  fi
-    log_installed_status $app
+    log_installed $app
   else
     log_info "Already installed: $app"
   fi
@@ -184,7 +186,7 @@ function brew_install() {
       echo "Installing $app"
       run_silent brew install $app
     fi
-    log_installed_status $app
+    log_installed $app
   else
     log_info "Already installed: $app"
   fi

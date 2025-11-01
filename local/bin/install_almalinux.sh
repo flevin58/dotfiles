@@ -15,24 +15,19 @@ assert_network
 
 #
 # Install gum for better terminal UIs
+# Note: epel-release is a prerequisite for gum
 #
+alma_install epel-release
 alma_install gum
 
 #
 # Golang && Gum (go compiler, delve debugger and gopls language server)
 #
-echo "Installing prerequisites: go and gum"
 alma_install golang-bin
 gum spin --title "Installing gopls" -- go install golang.org/x/tools/gopls@latest
 log_installed "gopls"
 gum spin --title "Installing delve" -- go install github.com/go-delve/delve/cmd/dlv@latest
 log_installed "delve"
-
-#
-# Enable the EPEL (Extra Packages for Enterprise Linux) repository
-#
-gum spin --title "Installing EPEL (Extra Packages)" -- sudo dnf install -y epel-release
-log_installed "EPEL (Extra Packages)"
 
 #
 # Zsh

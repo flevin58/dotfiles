@@ -87,6 +87,15 @@ function assert_brew() {
   fi
 }
 
+function log_installed_status() {
+  if [ $? -eq 0 ]; then
+    log_info "Succesfully installed $1 $OK_EMOJI"
+  else
+    log_error "Error installing $1 $ERROR_EMOJI"
+    exit 1
+  fi
+}
+
 function cargo_install() {
   arg=$1
   cmd=${arg##*-}
@@ -95,11 +104,7 @@ function cargo_install() {
     return
   fi
   gum spin --title "Installing $arg" -- cargo install $arg
-  if [ $? -eq 0 ]; then
-    log_info "Succesfully installed $arg $OK_EMOJI"
-  else
-    log_error "Error installing $arg $ERROR_EMOJI"
-  fi
+  log_installed_status $arg
 }
 
 function brew_installed() {
@@ -119,12 +124,7 @@ function alma_install() {
 	    echo "Installing $app"
 	    run_silent sudo dnf install -y $app
 	  fi
-	    if [ $? -eq 0 ]; then
-	      log_info "Succesfully installed $app $OK_EMOJI"
-	    else
-	      log_error "Error installing $app $ERROR_EMOJI"
-        exit 1
-	    fi
+    log_installed_status $app
   else
     log_info "Already installed: $app"
   fi
@@ -139,11 +139,7 @@ function brew_install() {
       echo "Installing $app"
       run_silent brew install $app
     fi
-    if [ $? -eq 0 ]; then
-      log_info "Succesfully installed $app $OK_EMOJI"
-    else
-      log_error "Error installing $app $ERROR_EMOJI"
-    fi
+    log_installed_status $app
   else
     log_info "Already installed: $app"
   fi

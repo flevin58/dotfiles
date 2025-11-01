@@ -48,7 +48,6 @@ gum spin --title "Updating dnf" sudo dnf -y update
 #
 # Install core apps
 #
-alma_install fastfetch
 alma_install bat
 alma_install fzf
 alma_install lf
@@ -66,6 +65,14 @@ alma_install zip
 #
 NVIM_LATEST_URL="https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-arm64.tar.gz"
 sudo curl -sL $NVIM_LATEST_URL | tar xzf - -C /usr --strip-components=1
+log_installed_status "neovim"
+
+#
+# Install fastfetch
+#
+FASTFETCH_URL="https://github.com/fastfetch-cli/fastfetch/releases/download/2.54.0/fastfetch-linux-aarch64.tar.gz"
+sudo curl -sL $FASTFETCH_URL  | tar xzf - -C /usr --strip-components=2
+log_installed_status "fastfetch"
 
 #
 # Install Visual Studio Code

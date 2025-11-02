@@ -89,9 +89,10 @@ alma_install code
 #
 alma_install nvm
 alma_install just
+alma_install nodejs
 
 log_info "🦀 Installing rust"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl -s --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 log_info "🦀 Installing cargo addons"
 cargo_install cargo-expand
 cargo_install cargo-generate
@@ -113,12 +114,12 @@ gum spin --title "Installing Fira Code Mono font" -- oh-my-posh font install Fir
 log_installed "Fira Code Mono font"
 
 # Install NodeJS via nvm (needed by neovim's treesitter)
-if command_found node; then
-  log_info "Already installed: NodeJS"
-else
-  gum spin --title "Installing NodeJS" -- nvm install node
-  log_installed "NodeJS"
-fi
+# if command_found node; then
+#   log_info "Already installed: NodeJS"
+# else
+#   gum spin --title "Installing NodeJS" -- nvm install node
+#   log_installed "NodeJS"
+# fi
 
 #
 # Bat theme configuration
